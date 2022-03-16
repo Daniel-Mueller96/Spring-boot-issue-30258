@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+  <meta charset="UTF-8">
+  <title>Neue Klausur eintragen</title>
+  <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}"
+        href="/static/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+  <h1>Neue Klausur eintragen</h1>
+
+  <form name="klausurform" method="post" th:action="klausuren">
+    <div class="form-floating mb-3">
+      <input type="text" class="form-control" id="name" placeholder=" "
+             name="name" value="">
+      <label for="name">Name der Veranstaltung</label>
+    </div>
+    <div class="form-floating mb-3">
+      <input type="text" class="form-control" id="lsfId" placeholder=" " name="lsfId" value="">
+      <label for="lsfId" class="form-label">ID der Veranstaltung im LSF</label>
+      <div class="form-text">Sie finden die LSF Veranstaltungs-ID im <a
+          href="https://lsf.hhu.de/qisserver/rds?state=wtree&search=1&category=veranstaltung.browse&navigationPosition=lectures%2Clectureindex&breadcrumb=lectureindex&topitem=lectures&subitem=lectureindex"
+          target="_blank">LSF</a>.
+      </div>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" id="present" name="present" value="true"
+             checked="checked"><input type="hidden" name="present" value="on"/>
+      <label class="form-check-label" for="present">
+        Die Klausur findet in Präsenz statt.
+      </label>
+    </div>
+    <div class="form-floating mb-3">
+      <input type="date" class="form-control" id="date"
+             placeholder=" " name="date" value="">
+      <label for="date" class="form-label">Datum der Klausur (dd.mm.yyyy)</label>
+    </div>
+    <div class="form-floating mb-3">
+      <input type="time" class="form-control" id="startTime" placeholder=" " name="startTime"
+             value="">
+      <label for="startTime">Klausurbeginn (hh:mm)</label>
+      <div class="form-text">Runden Sie die Startzeit auf die nächste vorgegebene Zeit ab. Falls die
+        Klausur vor 08:30 Uhr beginnt, tragen Sie bitte 08:30 Uhr ein.
+      </div>
+    </div>
+    <div class="form-floating mb-3">
+      <input type="time" class="form-control" id="endTime" placeholder=" " name="endTime" value="">
+      <label for="endTime" class="form-label">Klausurende (hh:mm)</label>
+      <div class="form-text">Runden Sie die Zeit auf die nächste vorgegebene Zeit auf. Falls die
+        Klausur nach 13:30 Uhr endet, tragen Sie bitte 13:30 Uhr ein.
+      </div>
+    </div>
+    <button name="submit btn" class="btn btn-primary" type="submit">Eintragen</button>
+  </form>
+</div>
+</body>
+</html>
