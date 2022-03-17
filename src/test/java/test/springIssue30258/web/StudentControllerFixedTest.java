@@ -1,6 +1,7 @@
 package test.springIssue30258.web;
 
 import static org.junit.jupiter.api.Assertions.fail;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -33,7 +34,6 @@ public class StudentControllerFixedTest {
             true, "Test");
     RequestBuilder builder = MockMvcRequestBuilders.post("/klausur")
         .flashAttr("klausurInputDTO", klausurInputDTO);
-    mvc.perform(builder);
-    fail();
+    mvc.perform(builder).andExpect(status().is(302));
   }
 }

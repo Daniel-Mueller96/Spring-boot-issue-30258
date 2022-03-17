@@ -1,6 +1,7 @@
 package test.springIssue30258.web;
 
 import static org.junit.jupiter.api.Assertions.fail;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -22,7 +23,7 @@ public class StudentControllerTest {
   MockMvc mvc;
 
   @Test
-  @DisplayName("shows the 400 through the fail at the end")
+  @DisplayName("shows the 400 through the status matcher at the end")
   //uses the StudentController
   void test_7() throws Exception {
     KlausurInputDTO klausurInputDTO =
@@ -32,7 +33,6 @@ public class StudentControllerTest {
             true, "Test");
     RequestBuilder builder = MockMvcRequestBuilders.post("/klausuren")
         .flashAttr("klausur", klausurInputDTO);
-    mvc.perform(builder);
-    fail();
+    mvc.perform(builder).andExpect(status().is(400));
   }
 }
